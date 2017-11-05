@@ -1,2 +1,2 @@
 # samples
-My samples
+RC samples
