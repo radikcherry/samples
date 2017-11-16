@@ -1,0 +1,15 @@
+server:
+  port: '9191'
+  session:
+    cookie.name: OAUTH2SESSION
+    
+security:
+  oauth2:
+    client:
+      authentication-scheme: query
+      client-authentication-scheme: header
+      
+logging:
+  level:
+    org.springframework.security: DEBUG
+      
