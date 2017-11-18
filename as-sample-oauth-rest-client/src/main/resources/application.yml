@@ -5,7 +5,7 @@ security:
       client-secret: secret
       grant-type: authorization_code
       token-name: oauth_token
-      authentication-scheme: query
+      authentication-scheme: header
       client-authentication-scheme: header
       user-authorization-uri: http://localhost:9191/oauth/authorize
       access-token-uri: http://localhost:9191/oauth/token

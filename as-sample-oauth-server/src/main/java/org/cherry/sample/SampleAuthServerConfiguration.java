@@ -1,7 +1,10 @@
 package org.cherry.sample;
 
+import java.security.KeyPair;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -10,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 
 @Configuration
@@ -29,9 +33,9 @@ public class SampleAuthServerConfiguration extends AuthorizationServerConfigurer
 	@Bean
 	public JwtAccessTokenConverter tokenEnhancer() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-		//KeyStoreKeyFactory keyStoreFactory = new KeyStoreKeyFactory(new ClassPathResource("keystore.jks"), "foobar".toCharArray());
-		//KeyPair keyPair = keyStoreFactory.getKeyPair("test");
-		//converter.setKeyPair(keyPair);
+		KeyStoreKeyFactory keyStoreFactory = new KeyStoreKeyFactory(new ClassPathResource("jwt.jks"), "secret".toCharArray());
+		KeyPair keyPair = keyStoreFactory.getKeyPair("jwt");
+		converter.setKeyPair(keyPair);
 		return converter;
 	}
 	
@@ -46,9 +50,9 @@ public class SampleAuthServerConfiguration extends AuthorizationServerConfigurer
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		endpoints
 			.authenticationManager(authenticationManager)
-			.userDetailsService(userDetailsService);
-			//.tokenStore(tokenStore())
-			//.accessTokenConverter(tokenEnhancer());
+			.userDetailsService(userDetailsService)
+			.tokenStore(tokenStore())
+			.accessTokenConverter(tokenEnhancer());
 	}
 
 	@Override
