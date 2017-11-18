@@ -1,0 +1,17 @@
+security:
+  oauth2:
+    client:
+      client-id: sample
+      client-secret: secret
+      grant-type: authorization_code
+      token-name: oauth_token
+      authentication-scheme: header
+      client-authentication-scheme: header
+      user-authorization-uri: http://localhost:9191/oauth/authorize
+      access-token-uri: http://localhost:9191/oauth/token
+    resource:
+      token-info-uri: http://localhost:9191/oauth/check_token
+
+logging:
+  level:
+    org.springframework.security: DEBUG
