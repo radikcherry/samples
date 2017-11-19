@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.cherry.sample.model.Movie;
 import org.cherry.sample.model.MovieService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,7 +21,7 @@ public class MovieController {
 
 	
 	@GetMapping("/movie/{id}")
-	public Optional<Movie> findById(String id) {
+	public Optional<Movie> findById(@PathVariable String id) {
 		return service.findById(id);
 	}
 

@@ -18,7 +18,7 @@ class UserCLR implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		userRepository.save(new User("admin", "pass", true, new String[]{"ROLE_USER", "ROLE_ADMIN"}));
-		userRepository.save(new User("user", "pass", true, new String[]{"ROLE_USER"}));
+		userRepository.save(new User("admin", "{noop}pass", true, new String[]{"ROLE_USER", "ROLE_ADMIN"}));
+		userRepository.save(new User("user",  "{noop}pass", true, new String[]{"ROLE_USER"}));
 	}
 }
