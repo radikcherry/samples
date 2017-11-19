@@ -1,0 +1,31 @@
+GET http://localhost:8080/book/list  
+	-> 302 redirect: http://localhost:8080/login
+
+GET http://localhost:8080/login  
+	-> 302 redirect: http://localhost:9191/oauth/authorize?client_id=sample&redirect_uri=http://localhost:8080/login&response_type=code&state=fO5HA4
+
+GET http://localhost:9191/oauth/authorize  
+	-> 302 redirect: http://localhost:9191/login
+
+GET http://localhost:9191/login  
+	-> 200 OK (form)
+
+POST http://localhost:9191/login
+	[username, password, _csrf]
+	-> 302 redirect: http://localhost:9191/oauth/authorize?client_id=sample&redirect_uri=http://localhost:8080/login&response_type=code&state=fO5HA4
+
+GET http://localhost:9191/oauth/authorize?client_id=sample&redirect_uri=http://localhost:8080/login&response_type=code&state=fO5HA4
+	-> 302 redirect: http://localhost:8080/login?code=8t8uow&state=fO5HA4
+
+GET http://localhost:8080/login?code=8t8uow&state=fO5HA4
+	-> 302 after processing redirect to: http://localhost:8080/book/list
+
+... internal processing...:
+
+POST http://localhost:9191/oauth/token?grant_type=authorization_code&client_id=sample&client_secret=secret&redirect_uri=http://localhost:8080/login&code=Xs7mii&state=fO5HA4
+	-> 200 OK {body: token}
+
+POST http://localhost:9191/oauth/check_token
+	[header: client basic auth]
+	{body: token}
+	-> 200 OK 
