@@ -1,0 +1,21 @@
+[
+	{
+		"isbn": "1111111",
+		"title": "The Spirit Thief",
+		"author": "Rachel Aaron",
+		"description": "Eli Monpress is talented. He's charming. And he's a thief.But not just any thief. He's the greatest thief of the age - and he's also a wizard."
+	},
+	{
+		"isbn": "2222222",
+		"title": "The Spirit Rebellion",
+		"author": "Rachel Aaron",
+		"description": "Eli Monpress is brilliant. He's incorrigible. And he's a thief.He's also still at large, which drives Miranda Lyonette crazy."
+	},
+	{
+		"isbn": "8888",
+		"title": "Lord of The Rings",
+		"author": "J.K.Tolkien",
+		"description": "updated 2",
+		"_class": "org.cherry.sample.model.Book"
+	}
+]

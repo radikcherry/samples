@@ -1,0 +1,15 @@
+spring.datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/sample?autoReconnect=true&useSSL=false
+    username: root
+    password: toor
+
+wm-robo.integrator:
+    supplier:
+        quandl:
+            api-url: https://www.quandl.com/api/v3
+            api-key: YqDHC8u5D4DsVqdBwj1E
+        
+        alphavantage:
+            api-url: https://www.alphavantage.co
+            api-key: QJ9MFFXW6K4BUZB7

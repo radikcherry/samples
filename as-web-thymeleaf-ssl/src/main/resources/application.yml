@@ -1,0 +1,13 @@
+server:  
+  port: 443
+  ssl:
+    enabled: true
+    key-alias: cherry
+    key-store: classpath:keystore.p12
+    key-store-type: PKCS12
+    key-store-password: secret
+    key-password: secret
+    
+logging:
+  level:
+    org.springframework.security: DEBUG
